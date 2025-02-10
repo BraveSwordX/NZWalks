@@ -17,7 +17,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<NZWalksDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString")));
-// ชื่อ "NZWalksDbContext" ใช้จาก ConnectionStrings ใน appsettings.json
+
+builder.Services.AddDbContext<NZWalksAuthDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksAuthConnectionString")));
 
 builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
